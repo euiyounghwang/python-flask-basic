@@ -30,6 +30,9 @@ poetry config virtualenvs.in-project true
 poetry init
 poetry add uvicorn
 poetry add pytest
+poetry add "connexion[swagger-ui]"
+poetry add "connexion[flask]"
+poetry add "connexion[swagger-ui]"
 ```
 
 
