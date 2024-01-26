@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "python-flask-basic"
+version = "0.1.0"
+description = ""
+authors = ["euiyounghwang <marieuig@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.9"
+pytest = "^7.4.4"
+python-dotenv = "^1.0.1"
+uvicorn = "^0.27.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
