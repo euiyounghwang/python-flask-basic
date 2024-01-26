@@ -43,3 +43,8 @@ remote: Permission to euiyounghwang/python-flask-basic.git denied to euiyounghwa
 fatal: unable to access 'https://github.com/euiyounghwang/python-flask-basic.git/': The requested URL returned error: 403
 (.venv) ➜  python-flask-basic git:(master) git config --local credential.helper ""
 ```
+
+#### Run Service
+```bash
+http://localhost:5000/api/ui/
+```
