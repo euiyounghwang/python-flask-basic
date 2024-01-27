@@ -24,7 +24,7 @@ set -eu
 
 docker build \
   -f "$(dirname "$0")/Dockerfile" \
-  -t fn-flask-basic-api:es \
+  -t euiyoung/fn-flask-basic-api:es \
   --target runtime \
   "$(dirname "$0")/."
 

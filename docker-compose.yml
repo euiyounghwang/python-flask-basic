@@ -4,7 +4,7 @@ name: python-flask-basic-api
 services:
 
   fn-flask-basic-api:
-    image: fn-flask-basic-api:es
+    image: euiyoung/fn-flask-basic-api:es
     container_name: fn-flask-basic-api
     build:
       context: .
@@ -21,7 +21,7 @@ services:
       - bridge
       
   fn-flask-basic-api-test:
-    image: fn-flask-basic-api:test
+    image: euiyoung/fn-flask-basic-api:test
     container_name: fn-flask-basic-api-test
     build:
       context: .

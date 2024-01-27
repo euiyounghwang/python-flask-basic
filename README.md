@@ -55,3 +55,9 @@ fatal: unable to access 'https://github.com/euiyounghwang/python-flask-basic.git
 ```bash
 http://localhost:5000/api/ui/
 ```
+
+
+#### Push Docker-io with my account
+```bash
+docker push euiyoung/fn-flask-basic-api:es
+```
