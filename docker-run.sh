@@ -13,5 +13,5 @@ docker run --rm --platform linux/amd64 -it -d \
   --network bridge \
   -e DATABASE_URL=postgresql://postgres:1234@host.docker.internal:15432/postgres \
   -v "$SCRIPTDIR:/app/FN-BEES-Services/" \
-  fn-flask-basic-api:es
+  euiyoung/fn-flask-basic-api:es
 
