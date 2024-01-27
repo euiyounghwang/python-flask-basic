@@ -13,7 +13,7 @@ services:
     ports:
       - 15000:5000
     volumes:
-      - ./python-flask-basic:/app/FN-BEES-Services
+      - ${PROJECTS_DIR}/python-flask-basic:/app/FN-BEES-Services
     restart: unless-stopped
     environment:
       - DATABASE_URL=postgresql://postgres:1234@host.docker.internal:15432/postgres
