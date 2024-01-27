@@ -24,7 +24,8 @@ https://python-poetry.org/docs/?ref=dylancastillo.co#installing-with-the-officia
 python -m venv .venv
 source .venv/bin/activate
 
-alembic init python-flask-basic
+alembic init alembic
+alembic revision -m "first migrations"
 ```
 
 
