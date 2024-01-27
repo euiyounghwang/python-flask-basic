@@ -59,6 +59,9 @@ http://localhost:5000/api/ui/
 
 #### Push Docker-io with my account
 ```bash
+
+docker login -u "euiyoung" -p "<password>" docker.io
+
 docker push euiyoung/fn-flask-basic-api:es
 
 (.venv) ➜  python-elasticsearch git:(master) docker push euiyoung/fn-flask-basic-api:es
