@@ -24,6 +24,7 @@ https://python-poetry.org/docs/?ref=dylancastillo.co#installing-with-the-officia
 python -m venv .venv
 source .venv/bin/activate
 
+# Migrate
 alembic init alembic
 alembic revision -m "first migrations"
 alembic upgrade head
