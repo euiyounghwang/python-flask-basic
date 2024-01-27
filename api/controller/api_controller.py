@@ -10,10 +10,6 @@ from api.repository.schema import (UserSchema)
 userRepo = UserRepo()
 userSchema = UserSchema()
 
-def index():
-    logger.info("call..")
-    return render_template('index.html')
-
 
 def api_get():
     try:

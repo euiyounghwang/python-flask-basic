@@ -1,0 +1,42 @@
+version: '3'
+#docker-compose -f ./docker-compose.yml up or docker-compose up
+name: python-flask-basic-api
+services:
+
+  fn-flask-basic-api:
+    image: fn-flask-basic-api:es
+    container_name: fn-flask-basic-api
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: runtime
+    ports:
+      - 15000:5000
+    volumes:
+      - ./python-flask-basic:/app/FN-BEES-Services
+    restart: unless-stopped
+    environment:
+      - DATABASE_URL=postgresql://postgres:1234@host.docker.internal:15432/postgres
+    networks:
+      - bridge
+      
+  fn-flask-basic-api-test:
+    image: fn-flask-basic-api:test
+    container_name: fn-flask-basic-api-test
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: test
+    ports:
+      - 15001:5001
+    volumes:
+      - ${PROJECTS_DIR}/python-flask-basic:/app/FN-BEES-Services
+    environment:
+      - DATABASE_URL=postgresql://postgres:1234@host.docker.internal:15432/postgres
+    networks:
+      - bridge
+
+      
+networks:
+  bridge:
+    driver: bridge
