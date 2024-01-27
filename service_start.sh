@@ -2,11 +2,13 @@
 set -e
 
 # export PYTHONDONTWRITEBYTECODE=1
-
 # To Run the Server with Automatic Restart When Changes Occur
 
 # Activate virtualenv && run serivce
 SCRIPTDIR="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
+
+# export FLASK_APP=$SCRIPTDIR/api/wsgi.py
+# flask db init
 
 source $SCRIPTDIR/.venv/bin/activate
 

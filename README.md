@@ -23,6 +23,8 @@ https://python-poetry.org/docs/?ref=dylancastillo.co#installing-with-the-officia
 ```bash
 python -m venv .venv
 source .venv/bin/activate
+
+alembic init python-flask-basic
 ```
 
 

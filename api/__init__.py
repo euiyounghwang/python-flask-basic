@@ -27,6 +27,7 @@ with open('config.yaml', 'r') as f:
 DATABASE_URL = os.getenv("DATABASE_URL", "postgresql://postgres:1234@{}:{}/postgres".format(doc['app']['mud']['host'], doc['app']['mud']['port']))
 ma = Marshmallow()
 db = SQLAlchemy()
+migrate = Migrate()
 
 """
 # Create the application instance
@@ -77,12 +78,14 @@ def init_api():
     #     db.create_all()
     
     db.init_app(connex_app.app)
-    db.app = connex_app.app
+    # db.app = connex_app.app
     with connex_app.app.app_context():
         print('--create tables..')
         db.create_all()
     
     # --
+    
+    migrate.init_app(connex_app.app, db)
     
     return connex_app
 
