@@ -26,6 +26,7 @@ source .venv/bin/activate
 
 alembic init alembic
 alembic revision -m "first migrations"
+alembic upgrade head
 ```
 
 
