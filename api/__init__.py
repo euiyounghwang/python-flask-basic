@@ -78,7 +78,7 @@ def init_api():
     #     db.create_all()
     
     db.init_app(connex_app.app)
-    # db.app = connex_app.app
+    db.app = connex_app.app
     with connex_app.app.app_context():
         print('--create tables..')
         db.create_all()
