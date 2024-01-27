@@ -15,16 +15,19 @@ class UserRepo:
         db.session.commit()
 
     def fetchById(self, _id) -> 'Users':
-        userRepo =  db.session.query(Users).filter(Item.id == _id).first()
+        logger.info('Repo fetchById')
+        # userRepo =  db.session.query(Users).filter(Users.id == _id).first()
+        userRepo =  db.session.query(Users).filter_by(id=_id).first()
         if userRepo:
-            logger.info('fetchById -> {}'.format(json.dumps(userRepo.json(), indent=2)))
+            logger.info('fetchById (Exist) -> {}'.format(json.dumps(userRepo.json(), indent=2)))
         return userRepo
-        # return db.session.query(Item).filter_by(id=_id).first()
+        
 
     def fetchAll(self) -> List['Users']:
         userRepo = db.session.query(Users).all()
         userRepos = [obj.json() for obj in userRepo]
-        logger.info('fetchAll -> {}'.format(json.dumps(userRepos, indent=2)))
+        if userRepos:
+            logger.info('fetchAll -> {}'.format(json.dumps(userRepos, indent=2)))
         return userRepos
     
     def fetch_Page_All(self, page, page_size) -> List['Users']:

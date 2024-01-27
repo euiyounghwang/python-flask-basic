@@ -18,9 +18,9 @@ servers:
 paths:
   /db:
     get:
-      operationId: "api.controller.api_controller.api_get"
+      operationId: api.controller.api_controller.omni_db_entity_all_json
       tags:
-        - "database"
+        - database
       summary: "The table data structure supported by the server application"
       description: "Read the list of people"
       responses:
@@ -38,6 +38,27 @@ paths:
                 #     type: string
                 #   timestamp:
                 #     type: string
+  /db/{_id}:
+    get:
+      operationId: api.controller.api_controller.omni_db_entity_fetchbyid_json
+      tags:
+        - database
+      summary: Return an User with given id
+      description: Return an User with given id
+      parameters:
+        - name: _id
+          in: path
+          description: User _id
+          required: true
+          schema:
+            type: string
+      responses:
+        "200": # status code
+          description: Return an Item with given ID
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/User"
             
  
   
