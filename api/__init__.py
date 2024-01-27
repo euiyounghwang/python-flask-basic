@@ -1,8 +1,8 @@
 import connexion
-# from flask import (
-#     # Flask,
-#     render_template
-# )
+from flask import (
+    Flask,
+    render_template
+)
 from flask_cors import CORS
 from config.log_config import create_log
 import yaml
@@ -43,8 +43,19 @@ app.add_api('swagger.yml')
 # server_args={'static_folder'='../frontEnd/static', 'template_folder'='../frontEnd/templates'})
 def init_api():
     # Create the application instance
-    # connex_app = Flask(__name__, template_folder="templates")
+    connex_app = Flask(__name__, template_folder="./templates")
     connex_app = connexion.App(__name__, specification_dir='./openapi/')
+    
+    @connex_app.route('/')
+    def home():
+        """
+        This route function responds to all incoming requests
+        on <URL>/
+        
+        :return:	A "Hello world!" string
+        """
+        return render_template('index.html')
+            
     connex_app.add_api("swagger.yml", arguments={"title": "files"})
     CORS(connex_app.app)
     
