@@ -18,7 +18,7 @@ servers:
 paths:
   /db:
     get:
-      operationId: "Controller.api_controller.api_get"
+      operationId: "api.controller.api_controller.api_get"
       tags:
         - "database"
       summary: "The table data structure supported by the server application"
