@@ -10,9 +10,12 @@ class UserRepo:
     '''
 
     def create(self, users):
-        logger.info('create -> {}'.format(users))
-        db.session.add(users)
-        db.session.commit()
+        logger.info('create -> {}, id : {}'.format(users, users.id))
+        if not self.fetchById(users.id):
+            db.session.add(users)
+            db.session.commit()
+            return users
+        return None
 
     def fetchById(self, _id) -> 'Users':
         logger.info('Repo fetchById')

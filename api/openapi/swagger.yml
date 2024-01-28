@@ -38,6 +38,29 @@ paths:
                 #     type: string
                 #   timestamp:
                 #     type: string
+    post:
+      operationId: api.controller.api_controller.omni_db_entity_create_json
+      tags:
+        - database
+      summary: Create a new User
+      description: Create a new User
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/User"
+      responses:
+        201:
+          description: User Created successfully
+        500:
+          description: "Unspecified search server error message"
+          content:
+            application/json:
+              schema:
+                properties:
+                  message:
+                    type: string
+          
   /db/{_id}:
     get:
       operationId: api.controller.api_controller.omni_db_entity_fetchbyid_json
@@ -53,12 +76,13 @@ paths:
           schema:
             type: string
       responses:
-        "200": # status code
+        200: # status code
           description: Return an Item with given ID
           content:
             application/json:
               schema:
                 $ref: "#/components/schemas/User"
+        
             
  
   
@@ -67,9 +91,9 @@ components:
     User:
       type: object
       properties:
-        fname:
+        id:
           type: string
-        lname:
+        name:
           type: string
-        timestamp:
-          type: string
+        # create_date:
+        #   type: string
