@@ -27,6 +27,31 @@ RUN conda/bin/conda create --yes --quiet --name fn_bees_services && \
 
 
 
+# Create test image
+FROM --platform=linux/amd64 python:3.6.13 as test
+
+WORKDIR /app
+COPY --from=environment /app .
+COPY . FN-BEES-Services
+
+RUN /bin/bash -c 'source /app/conda/bin/activate fn_bees_services && \
+    pip install --upgrade pip && \
+    pip install --no-cache-dir -r deps/requirements.txt'
+
+RUN useradd deploy
+RUN chown -R deploy: /app/conda/envs/fn_bees_services /app/FN-BEES-Services
+
+RUN mkdir -p test-reports/junit/
+
+# Need these two lines to install VSCode extensions in devcontainer
+RUN mkdir -p /home/deploy/
+RUN chown -R deploy: /home/deploy
+
+USER deploy
+
+ENTRYPOINT ["/app/FN-BEES-Services/conda-run-tests.sh"]
+
+
 
 # Create runtime image
 FROM --platform=linux/amd64 python:3.6.13 as runtime
