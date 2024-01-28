@@ -27,7 +27,7 @@ def omni_db_entity_all_json():
 def omni_db_entity_create_json():
     try:
         user_req_json = request.get_json()
-        logger.info("omni_db_entity_create_json -> ", user_req_json)
+        logger.info("omni_db_entity_create_json -> {}".format(user_req_json))
         
         user_data = userSchema.load(user_req_json, session=db.session)
         response = userRepo.create(user_data)
@@ -43,6 +43,18 @@ def omni_db_entity_create_json():
 def omni_db_entity_fetchbyid_json(_id):
     try:
         results = userRepo.fetchById(_id)
+        if results:
+            return results.json(), 200
+        return {'message': ITEM_NOT_FOUND.format(_id)}, 404
+        
+    except Exception as ex:
+        logger.error(ex)
+        return ex, 500
+    
+    
+def omni_db_entity_delete_json(_id):
+    try:
+        results = userRepo.delete(_id)
         if results:
             return results.json(), 200
         return {'message': ITEM_NOT_FOUND.format(_id)}, 404

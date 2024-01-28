@@ -82,6 +82,28 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/User"
+    
+    delete:
+      operationId: api.controller.api_controller.omni_db_entity_delete_json
+      tags:
+        - database
+      summary: Delete an User with given ID
+      description: Delete an User with given ID
+      parameters:
+        - name: _id
+          in: path
+          description: User ID
+          required: true
+          schema:
+            type: string
+      responses:
+        "200": # status code
+          description: Deleted an User with given ID
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/User"
+
         
             
  

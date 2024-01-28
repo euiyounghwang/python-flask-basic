@@ -17,7 +17,7 @@ class UserRepo:
             return users
         return None
 
-    def fetchById(self, _id) -> 'Users':
+    def fetchById(self, _id) -> Users:
         logger.info('Repo fetchById')
         # userRepo =  db.session.query(Users).filter(Users.id == _id).first()
         userRepo =  db.session.query(Users).filter_by(id=_id).first()
@@ -43,11 +43,14 @@ class UserRepo:
         logger.info('fetch_Page_All -> {}'.format(json.dumps(userRepos, indent=2)))
         return userRepos
         
-    def delete(self, _id) -> None:
+    def delete(self, _id) -> Users:
         logger.info('delete: {}'.format(_id))
         user = db.session.query(Users).filter_by(id=_id).first()
-        db.session.delete(user)
-        db.session.commit()
+        if user:
+            db.session.delete(user)
+            db.session.commit()
+            return user
+        return None
 
     def update(self, item_data):
         print('update -> ', item_data)
