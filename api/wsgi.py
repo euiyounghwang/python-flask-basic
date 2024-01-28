@@ -1,6 +1,8 @@
 from api import init_api
+from job.job import create_jobs
 
 application = init_api()
+# create_jobs()
 
 def main():
     app = init_api()

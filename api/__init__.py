@@ -39,6 +39,7 @@ app = connexion.App(__name__, specification_dir='./openapi/')
 app.add_api('swagger.yml')
 """
 
+
 # Connexion is a Python web framework that makes spec-first and api-first development easy
 # With Connexion, you write your API specification first, and automatically get a lot of functionality.
 # server_args={'static_folder'='../frontEnd/static', 'template_folder'='../frontEnd/templates'})

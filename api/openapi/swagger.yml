@@ -3,7 +3,7 @@ openapi: 3.0.0
 info:
   description: Basic project with Flask , Connexion and OpenApi 3
   version: 1.0.0
-  title: Connexion example
+  title: Flask-Connexion Basic Restful Service
   contact:
     email: marieuig@gmail.com
   license:
