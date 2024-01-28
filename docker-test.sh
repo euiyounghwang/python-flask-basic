@@ -11,5 +11,7 @@ SCRIPTDIR="$(
 # VS Code : Remove -it
 docker run --rm -it --name euiyoung/fn-flask-basic-api-test --publish 15001:5000 --expose 5000 \
   -e DATABASE_URL=postgresql://postgres:1234@host.docker.internal:15432/postgres \
+  -e KAFKA_HOST=host.docker.internal:29092,host.docker.internal:39092 \
+  -e KAFKA_TOPIC=test-topic,test1-topic \
   -v "$SCRIPTDIR:/app/FN-BEES-Services/" \
   euiyoung/fn-flask-basic-api:test

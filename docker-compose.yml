@@ -17,6 +17,8 @@ services:
     restart: unless-stopped
     environment:
       - DATABASE_URL=postgresql://postgres:1234@host.docker.internal:15432/postgres
+      - KAFKA_HOST=host.docker.internal:29092,host.docker.internal:39092
+      - KAFKA_TOPIC=test-topic,test1-topic
     networks:
       - bridge
       
@@ -33,6 +35,8 @@ services:
       - ${PROJECTS_DIR}/python-flask-basic:/app/FN-BEES-Services
     environment:
       - DATABASE_URL=postgresql://postgres:1234@host.docker.internal:15432/postgres
+      - KAFKA_HOST=host.docker.internal:29092,host.docker.internal:39092
+      - KAFKA_TOPIC=test-topic,test1-topic
     networks:
       - bridge
 
