@@ -7,7 +7,7 @@ from .kafka_job import consumer_kafka
 
 # Declaration of the task as a function.
 def print_date_time():
-    logger.info(time.strftime("%A, %d. %B %Y %I:%M:%S %p"))
+    print(time.strftime("%A, %d. %B %Y %I:%M:%S %p"))
 
 
 def thread_background():
@@ -22,6 +22,7 @@ def thread_background():
 
 
 def create_jobs():
+    
     # Create the background scheduler
     scheduler = BackgroundScheduler()
     # Create the job
