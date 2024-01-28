@@ -2,16 +2,19 @@
 from apscheduler.schedulers.background import BackgroundScheduler
 import time
 from threading import Thread
-
+from api import logger
+from .kafka_job import consumer_kafka
 
 # Declaration of the task as a function.
 def print_date_time():
-    print(time.strftime("%A, %d. %B %Y %I:%M:%S %p"))
+    logger.info(time.strftime("%A, %d. %B %Y %I:%M:%S %p"))
+
 
 def thread_background():
     while True:
         try:
-            print('--thread_background--')
+            logger.info('--thread_background--')
+            consumer_kafka()
         except Empty:
             pass
         time.sleep(5)  # TODO poll other things
