@@ -40,6 +40,6 @@ def create_jobs():
     scheduler.start()
     
     # Create thread as background
-    Thread(target=thread_background, daemon=True).start()
+    Thread(target=thread_background, args=(), daemon=True).start()
     
   
