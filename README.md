@@ -93,6 +93,7 @@ es: digest: sha256:1154c1125dca43ae585f45af4bf0df9374eecf05ab35d3fb9ac5131e97b0c
 
 
 ### Pytest
+```bash
 (.venv) ➜  python-flask-basic git:(master) ./pytest.sh 
 ======================================================================== test session starts =========================================================================
 platform darwin -- Python 3.9.7, pytest-7.0.1, pluggy-1.4.0 -- /Users/euiyoung.hwang/ES/Python_Workspace/python-flask-basic/.venv/bin/python
