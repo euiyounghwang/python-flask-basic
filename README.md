@@ -86,3 +86,38 @@ e4d0e810d54a: Pushed
 4e006334a6fd: Pushed
 es: digest: sha256:1154c1125dca43ae585f45af4bf0df9374eecf05ab35d3fb9ac5131e97b0ce22 size: 4101
 ```
+
+
+#### Swagger for REST-API
+![Alt text](./screenshot/Restful_Swagger.png)
+
+
+### Pytest
+(.venv) ➜  python-flask-basic git:(master) ./pytest.sh 
+======================================================================== test session starts =========================================================================
+platform darwin -- Python 3.9.7, pytest-7.0.1, pluggy-1.4.0 -- /Users/euiyoung.hwang/ES/Python_Workspace/python-flask-basic/.venv/bin/python
+cachedir: .pytest_cache
+rootdir: /Users/euiyoung.hwang/ES/Python_Workspace/python-flask-basic/tests, configfile: pytest.ini
+plugins: mock-3.6.1, cov-4.0.0
+collected 1 item                                                                                                                                                     
+
+tests/test_api.py::BaseTestAliveController::test_get_restful PASSED                                                                                            [100%]
+
+---------- coverage: platform darwin, python 3.9.7-final-0 -----------
+Name                               Stmts   Miss  Cover   Missing
+----------------------------------------------------------------
+api/__init__.py                       42      1    98%   58
+api/controller/__init__.py             0      0   100%
+api/controller/api_controller.py      48     31    35%   20-23, 28-39, 44-52, 56-64
+api/repository/__init__.py             0      0   100%
+api/repository/model.py               10      0   100%
+api/repository/repo.py                43     27    37%   13-18, 21-26, 37-44, 47-53, 56-58
+api/repository/schema.py               6      0   100%
+config/__init__.py                     0      0   100%
+config/log_config.py                  32      1    97%   42
+tests/__init__.py                     12      1    92%   16
+tests/conftest.py                     16      8    50%   10-13, 19-24
+tests/test_api.py                     10      1    90%   16
+----------------------------------------------------------------
+TOTAL                                219     70    68%                                            [100%]
+```
