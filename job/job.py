@@ -4,6 +4,8 @@ import time
 from threading import Thread
 from api import logger
 from .kafka_job import consumer_kafka
+import signal
+
 
 # Declaration of the task as a function.
 def print_date_time():
@@ -16,9 +18,16 @@ def thread_background():
             logger.info('--thread_background--')
             consumer_kafka()
         except Empty:
+            listen_kill_server()
             pass
         time.sleep(5)  # TODO poll other things
 
+
+def listen_kill_server():
+    signal.signal(signal.SIGTERM, bus.interrupted_process)
+    signal.signal(signal.SIGINT, bus.interrupted_process)
+    signal.signal(signal.SIGQUIT, bus.interrupted_process)
+    signal.signal(signal.SIGHUP, bus.interrupted_process)
 
 
 def create_jobs():
