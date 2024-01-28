@@ -93,6 +93,7 @@ es: digest: sha256:1154c1125dca43ae585f45af4bf0df9374eecf05ab35d3fb9ac5131e97b0c
 
 
 ### Pytest
+- py.test -v ./tests --cov-report term-missing --cov
 ```bash
 (.venv) ➜  python-flask-basic git:(master) ./pytest.sh 
 ======================================================================== test session starts =========================================================================
