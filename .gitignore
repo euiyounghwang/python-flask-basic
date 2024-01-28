@@ -2,4 +2,4 @@
 .venv/
 logs/
 _pycache__/
-alembic/
+#alembic/
