@@ -16,7 +16,7 @@ def thread_background():
     while True:
         try:
             logger.info('--thread_background--')
-            # consumer_kafka()
+            consumer_kafka()
         except Exception as e:
             listen_kill_server()
             pass
