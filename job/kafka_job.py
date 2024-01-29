@@ -1,5 +1,5 @@
 from kafka import KafkaConsumer
-from api import logger, read_config_yaml
+from api import logger
 from dotenv import load_dotenv
 import os
 import json
@@ -7,10 +7,9 @@ import json
 load_dotenv()
 
 # poetry add kafka-python
-def consumer_kafka():
+def consumer_kafka(doc):
     # brokers = ['localhost:29092', 'localhost:39092']
     # topics = 'test-topic'
-    doc = read_config_yaml()
     brokers = str(os.getenv("KAFKA_HOST", doc['app']['kafka']['host'])).split(",")
     topics =  os.getenv("KAFKA_TOPIC", doc['app']['kafka']['topic']).split(",")
 

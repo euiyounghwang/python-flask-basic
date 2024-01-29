@@ -13,11 +13,12 @@ def print_date_time():
 
 
 def thread_background():
+    doc = read_config_yaml()
     while True:
         try:
             # print('create --', type(read_config_yaml()))
             logger.info('--thread_background--')
-            consumer_kafka()
+            consumer_kafka(doc)
         except Exception as e:
             # listen_kill_server()
             pass
