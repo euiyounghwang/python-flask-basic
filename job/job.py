@@ -5,7 +5,7 @@ from threading import Thread
 from api import logger, read_config_yaml
 from .kafka_job import consumer_kafka
 import signal
-
+import os
 
 # Declaration of the task as a function.
 def print_date_time():
@@ -14,15 +14,19 @@ def print_date_time():
 
 def thread_background():
     doc = read_config_yaml()
-    while True:
-        try:
-            # print('create --', type(read_config_yaml()))
-            logger.info('--thread_background--')
-            consumer_kafka(doc)
-        except Exception as e:
-            # listen_kill_server()
-            pass
-        time.sleep(5)  # TODO poll other things
+    topics =  str(os.getenv("KAFKA_TOPIC", doc['app']['kafka']['topic'])).split(",")
+    for topic in topics:
+        Thread(target=consumer_kafka, args=(doc,topic), daemon=True).start()
+        
+    # while True:
+    #     try:
+    #         # print('create --', type(read_config_yaml()))
+    #         logger.info('--thread_background--')
+    #         consumer_kafka_create_task(doc)
+    #     except Exception as e:
+    #         # listen_kill_server()
+    #         pass
+    #     time.sleep(5)  # TODO poll other things
 
 
 def listen_kill_server():
