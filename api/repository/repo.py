@@ -34,7 +34,7 @@ class UserRepo:
     def fetchAll(self) -> List['Users']:
         # userRepo = db.session.query(Users).all()
         # .filter(Users.sequence == friendships.friend_id) \
-        userRepo = db.session.query() \
+        userRepo = db.session.query(Users, friendships) \
                     .filter(Users.sequence == friendships.friend_id) \
                     .add_columns(Users.sequence, Users.id, Users.name, Users.email, friendships.id.label("f_id")).all()
         
