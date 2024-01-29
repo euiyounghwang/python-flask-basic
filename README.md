@@ -1,7 +1,7 @@
 # python-flask-basic
 <img src="https://img.shields.io/badge/Flask-000000?style=for-the-badge&logo=flask&logoColor=white" /> <img src="https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white" /> <img src="https://img.shields.io/badge/Apache_Kafka-231F20?style=for-the-badge&logo=apache-kafka&logoColor=white" />  <img src="https://img.shields.io/badge/Docker-2CA5E0?style=for-the-badge&logo=docker&logoColor=white" /> <img src="https://img.shields.io/badge/Swagger-85EA2D?style=for-the-badge&logo=Swagger&logoColor=white" />
 
-Connexion is a modern Python web framework (build & install a enviroment using this script `./create_virtual_env.sh`) that makes spec-first and api-first development easy. You describe your API in an OpenAPI (or swagger) specification with as much detail as you want and Connexion will guarantee that it works as you specified. Also it can be test a few function as background job (a process that runs in the background, `https://github.com/euiyounghwang/python-flask-basic/blob/master/job/job.py`) in your API.
+Connexion is a modern Python web framework (build & install a enviroment using this script `source ./create_virtual_env.sh`) that makes spec-first and api-first development easy. You describe your API in an OpenAPI (or swagger) specification with as much detail as you want and Connexion will guarantee that it works as you specified. Also it can be test a few function as background job (a process that runs in the background, `https://github.com/euiyounghwang/python-flask-basic/blob/master/job/job.py`) in your API.
 
 Based on your specification, Connexion provides the following functionality:
 - Automatic routing to your Python functions
@@ -12,6 +12,8 @@ Based on your specification, Connexion provides the following functionality:
 - Response validation
 - A Swagger UI console with live documentation and ‘try it out’ feature
 
+docker exec -it kafka-cluster-kafka-1-1 kafka-topics --bootstrap-server=localhost:9092 --topic test-topic --delete --group Fastapi
+Created topic test-topic.
 
 #### Install Poerty
 ```bash
