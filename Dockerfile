@@ -2,6 +2,12 @@
 FROM --platform=linux/amd64 python:3.6.13 as environment
 ARG DEBIAN_FRONTEND=noninteractive
 
+# This prevents Python from writing out pyc files
+ENV PYTHONDONTWRITEBYTECODE 1
+
+# This keeps Python from buffering stdin/stdout
+ENV PYTHONUNBUFFERED 1
+
 WORKDIR /app
 ENV CONDA_NUMBER_CHANNEL_NOTICES=0
 
