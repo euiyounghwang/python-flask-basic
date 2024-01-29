@@ -29,10 +29,12 @@ def omni_db_entity_create_json():
         user_req_json = request.get_json()
         logger.info("omni_db_entity_create_json -> {}".format(user_req_json))
         
-        user_data = userSchema.load(user_req_json, session=db.session)
-        response = userRepo.create(user_data)
+        # user_data = userSchema.load(user_req_json, session=db.session)
+        # response = userRepo.create(user_data)
+        response = userRepo.create(user_req_json)
         if response:
-            return userSchema.dump(user_data),201
+            # return userSchema.dump(user_data),201
+            return user_req_json,201
         return {'message': 'ITEM_EXIST'}, 404
     except Exception as ex:
         logger.error(ex)

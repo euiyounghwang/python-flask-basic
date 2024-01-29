@@ -1,6 +1,6 @@
 
 from api import *
-from .model import (Users)
+from .model import (Users, friendships)
 from typing import List
 import json
 
@@ -10,9 +10,14 @@ class UserRepo:
     '''
 
     def create(self, users):
-        logger.info('create -> {}, id : {}'.format(users, users.id))
-        if not self.fetchById(users.id):
-            db.session.add(users)
+        # logger.info('create -> {}, id : {}'.format(users, users.id))
+        # logger.info(type(users))
+        logger.info('create -> {}, id : {}'.format(users, users.get("id")))
+        # if not self.fetchById(users.id):
+        if not self.fetchById(users.get("id")):
+            users_init = Users(id=users.get("id"), name=users.get("name"), email=users.get('email',''))
+            # db.session.add(users)
+            db.session.add(users_init)
             db.session.commit()
             return users
         return None
@@ -27,11 +32,33 @@ class UserRepo:
         
 
     def fetchAll(self) -> List['Users']:
-        userRepo = db.session.query(Users).all()
+        # userRepo = db.session.query(Users).all()
+        # .filter(Users.sequence == friendships.friend_id) \
+        userRepo = db.session.query() \
+                    .filter(Users.sequence == friendships.friend_id) \
+                    .add_columns(Users.sequence, Users.id, Users.name, Users.email, friendships.id.label("f_id")).all()
+        
+        print(userRepo, type(userRepo))       
+        """ 
         userRepos = [obj.json() for obj in userRepo]
         if userRepos:
             logger.info('fetchAll -> {}'.format(json.dumps(userRepos, indent=2)))
-        return userRepos
+        """
+        userRepos = [
+                {
+                    "sequence" : obj.sequence,
+                    "id" : obj.id,
+                    "name" : obj.name,
+                    "email" : obj.email,
+                    "friendships" : {
+                        "id" : obj.f_id
+                    }
+                }   
+                for obj in userRepo
+            ]
+        if userRepos:
+            return userRepos
+        return None
     
     def fetch_Page_All(self, page, page_size) -> List['Users']:
         skip = (page_size - 1) * page

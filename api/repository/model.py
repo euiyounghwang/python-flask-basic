@@ -13,8 +13,25 @@ class Users(db.Model):
     create_date = db.Column(db.DateTime, server_default=db.func.now())
     # server_default=db.func.now(), server_onupdate=db.func.now()
 
+    def __init__(self, id, name, email):
+        self.id = id
+        self.name = name
+        self.email = email
+        
     # def __repr__(self):
     #     return 'UserModel(seq=%d,id=%s,name=%s,create_date=%s)' % (self.sequence, self.id, self.name, str(self.create_date))
 
     def json(self):
         return {'seq':self.sequence,'id': self.id, 'name': self.name, 'create_date': str(self.create_date)}
+    
+    
+class friendships(db.Model):
+
+    __tablename__ = "friendships"
+
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(50), nullable=False)
+    friend_id = db.Column(db.Integer, db.ForeignKey('users_tb.sequence', ondelete='CASCADE'))
+
+    def json(self):
+        return {'id':self.id,'id': self.id, 'name': self.name, 'friend_id': str(self.friend_id)}
