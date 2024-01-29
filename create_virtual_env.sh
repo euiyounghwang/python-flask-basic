@@ -1,6 +1,8 @@
 #!/bin/bash
 set -e
 
+export PYTHONDONTWRITEBYTECODE=1
+
 SCRIPTDIR="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
 
 VENV=".venv"
@@ -24,5 +26,7 @@ if [ -d $SCRIPTDIR/$VENV ]; then
 fi
 
 make_python_virtual_env
+
+source $SCRIPTDIR/$VENV/bin/activate
 
 
