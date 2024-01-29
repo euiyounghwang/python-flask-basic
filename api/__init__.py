@@ -21,8 +21,12 @@ load_dotenv()
 logger = create_log()
 
 
-with open('config.yaml', 'r') as f:
-    doc = yaml.load(f, Loader=yaml.FullLoader)
+def read_config_yaml():
+    with open('config.yaml', 'r') as f:
+        doc = yaml.load(f, Loader=yaml.FullLoader)
+    return doc
+
+doc = read_config_yaml()
 
 DATABASE_URL = os.getenv("DATABASE_URL", "postgresql://postgres:1234@{}:{}/postgres".format(doc['app']['mud']['host'], doc['app']['mud']['port']))
 ma = Marshmallow()

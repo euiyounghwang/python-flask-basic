@@ -2,7 +2,7 @@
 from apscheduler.schedulers.background import BackgroundScheduler
 import time
 from threading import Thread
-from api import logger
+from api import logger, read_config_yaml
 from .kafka_job import consumer_kafka
 import signal
 
@@ -15,10 +15,11 @@ def print_date_time():
 def thread_background():
     while True:
         try:
+            # print('create --', type(read_config_yaml()))
             logger.info('--thread_background--')
             consumer_kafka()
         except Exception as e:
-            listen_kill_server()
+            # listen_kill_server()
             pass
         time.sleep(5)  # TODO poll other things
 
@@ -31,7 +32,6 @@ def listen_kill_server():
 
 
 def create_jobs():
-    
     # Create the background scheduler
     scheduler = BackgroundScheduler()
     # Create the job

@@ -1,7 +1,8 @@
 from kafka import KafkaConsumer
-from api import logger
+from api import logger, read_config_yaml
 from dotenv import load_dotenv
 import os
+import json
 
 load_dotenv()
 
@@ -9,9 +10,9 @@ load_dotenv()
 def consumer_kafka():
     # brokers = ['localhost:29092', 'localhost:39092']
     # topics = 'test-topic'
-    
-    brokers = str(os.getenv("KAFKA_HOST", 'localhost:29092,localhost:39092')).split(",")
-    topics = str(os.getenv("KAFKA_TOPIC", 'test-topic')).split(",")
+    doc = read_config_yaml()
+    brokers = str(os.getenv("KAFKA_HOST", doc['app']['kafka']['host'])).split(",")
+    topics =  os.getenv("KAFKA_TOPIC", doc['app']['kafka']['topic']).split(",")
 
     for topic in topics:
         consumer = KafkaConsumer(topic, group_id="Python_Kafka_Consumer_Job", bootstrap_servers=brokers)

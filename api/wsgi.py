@@ -5,7 +5,7 @@ application = init_api()
 
 # --
 # a process that runs in the background
-# create_jobs()
+create_jobs()
 # --
 
 def main():
