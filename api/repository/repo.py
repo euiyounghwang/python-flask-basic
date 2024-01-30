@@ -57,6 +57,7 @@ class UserRepo:
                 for obj in userRepo
             ]
         if userRepos:
+            logger.info("{}".format(json.dumps(userRepos, indent=2)))
             return userRepos
         return None
     
