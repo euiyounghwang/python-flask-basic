@@ -2,7 +2,7 @@
 from apscheduler.schedulers.background import BackgroundScheduler
 import time
 from threading import Thread
-from api import logger, read_config_yaml
+from api import logger, read_config_yaml, global_settings
 from .kafka_job import consumer_kafka
 import signal
 import os
@@ -14,8 +14,8 @@ def print_date_time():
 
 def thread_background():
     doc = read_config_yaml()
-    topics =  str(os.getenv("KAFKA_TOPIC", doc['app']['kafka']['topic'])).split(",")
-    for topic in topics:
+    # topics =  str(os.getenv("KAFKA_TOPIC", doc['app']['kafka']['topic'])).split(",")
+    for topic in global_settings.get_Kafka_topic():
         Thread(target=consumer_kafka, args=(doc,topic), daemon=True).start()
         
     # while True:

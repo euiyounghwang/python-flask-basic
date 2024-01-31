@@ -5,6 +5,7 @@ from flask import (
 )
 from flask_cors import CORS
 from config.log_config import create_log
+from config import config
 import yaml
 from dotenv import load_dotenv
 import os
@@ -13,6 +14,8 @@ import json
 from flask_marshmallow import Marshmallow
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
+
+from elasticsearch import Elasticsearch
 
 # --
 # get env
@@ -33,6 +36,10 @@ ma = Marshmallow()
 db = SQLAlchemy()
 migrate = Migrate()
 
+def get_headers():
+    ''' Elasticsearch Header '''
+    return {'Content-type': 'application/json', 'Connection': 'close'}
+
 """
 # Create the application instance
 app = Flask(__name__, template_folder="templates")
@@ -42,6 +49,13 @@ app = connexion.App(__name__, specification_dir='./openapi/')
 # Read the swagger.yml file to configure the endpoints
 app.add_api('swagger.yml')
 """
+
+global_settings = config.Settings(logger, doc)
+es_client = Elasticsearch(hosts=global_settings.get_Hosts(),
+                          headers=get_headers(),
+                          verify_certs=False,
+                          timeout=600
+)
 
 
 # Connexion is a Python web framework that makes spec-first and api-first development easy
