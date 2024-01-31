@@ -3,7 +3,7 @@
 
 Connexion is a modern Python web framework (build & install a enviroment using this script `source ./create_virtual_env.sh`) that makes spec-first and api-first development easy. You describe your API in an OpenAPI (or swagger) specification with as much detail as you want and Connexion will guarantee that it works as you specified. (It's very useful tool to build a number of schemas for database, <i>https://dbdiagram.io/d/65b83f0bac844320aefd041e</i>)
 - It can be test a few function as background job (a process that runs in the background, `https://github.com/euiyounghwang/python-flask-basic/blob/master/job/job.py`) in your API
-- Indexing Kafka message through thread in Restful API: <i>https://github.com/euiyounghwang/python-flask-basic/blob/master/job/kafka_job.py#L35</i>
+- Indexing Kafka message into Elasticsearch through thread in Restful API: <i>https://github.com/euiyounghwang/python-flask-basic/blob/master/job/kafka_job.py#L35</i>
 
 Based on your specification, Connexion provides the following functionality:
 - Automatic routing to your Python functions
