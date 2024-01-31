@@ -125,7 +125,8 @@ euiyoung/fn-flask-basic-api:test
 2024-01-27 22:23:55 
 2024-01-27 22:23:55 ============================== 1 passed in 1.05s ===============================
 ```
-- py.test -v ./tests --cov-report term-missing --cov
+- Go to virtual enviroment using `source .venv/bin/activate`
+- Run this command manually: `poetry run py.test -v --junitxml=test-reports/junit/pytest.xml --cov-report html --cov tests/` or `./pytest.sh`
 ```bash
 (.venv) ➜  python-flask-basic git:(master) ./pytest.sh 
 ======================================================================== test session starts =========================================================================
