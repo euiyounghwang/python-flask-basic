@@ -18,7 +18,7 @@ def consumer_kafka(doc, topic):
     
     consumer = KafkaConsumer(topic, group_id="Python_Kafka_Consumer_Job", bootstrap_servers=global_settings.get_Kafka_Hosts())
     for message in consumer:
-        logger.info("{}, {}, {}".format(message, message.value, message.value.decode("utf-8")))
+        # logger.info("{}, {}, {}".format(message, message.value, message.value.decode("utf-8")))
         
         '''
         docs = [{'index': {'_index': 'Kafka_Indexing'}}]
