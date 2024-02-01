@@ -37,12 +37,14 @@ def listen_kill_server():
 
 
 def create_jobs():
+    '''
     # Create the background scheduler
     scheduler = BackgroundScheduler()
     # Create the job
     scheduler.add_job(func=print_date_time, trigger="interval", seconds=10)
     # Start the scheduler
     scheduler.start()
+    '''
     
     # Create thread as background
     Thread(target=thread_background, args=(), daemon=True).start()
