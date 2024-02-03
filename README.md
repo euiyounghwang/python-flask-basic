@@ -16,7 +16,7 @@ Based on your specification, Connexion provides the following functionality:
 - Response validation
 - A Swagger UI console with live documentation and ‘try it out’ feature
 
-- Waitress (<i>https://pypi.org/project/waitress/</i>) is a production-quality pure-Python WSGI server with very acceptable performance. It has no dependencies except ones which live in the Python standard library
+__Waitress__(`pip install waitress`) (<i>https://pypi.org/project/waitress/</i>) is a production-quality pure-Python WSGI server with very acceptable performance. It has no dependencies except ones which live in the Python standard library
 
 docker exec -it kafka-cluster-kafka-1-1 kafka-topics --bootstrap-server=localhost:9092 --topic test-topic --delete --group Fastapi
 Created topic test-topic.
