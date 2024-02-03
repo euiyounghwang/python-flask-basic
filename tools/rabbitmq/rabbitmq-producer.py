@@ -4,6 +4,10 @@ import pika, socket
 import uuid
 import argparse
 from dotenv import load_dotenv
+import logging
+
+logging.basicConfig(format='%(asctime)s : %(levelname)s : %(message)s', level=logging.INFO)
+
 
 def start_rmq_handler(q_name, id, password, json_msg, hosts="localhost"):
 
@@ -24,7 +28,7 @@ def start_rmq_handler(q_name, id, password, json_msg, hosts="localhost"):
         channel.queue_declare(queue=q_name)
         channel.basic_publish(exchange='', routing_key=q_name, body=msg , properties=msg_props)
 
-        print("[{}] Sent..'".format(msg))
+        logging.info("#$@Q$@ -> [{}] Sent..'".format(msg))
 
     finally:
         connection.close()
@@ -39,7 +43,7 @@ if __name__ == '__main__':
     if args.es:
         host = args.es
 
-    print('host - ', host)
+    # logging.info('host - ', host)
     json_msg = {
             "entity_id" : "kraken_document-289857"
     }
