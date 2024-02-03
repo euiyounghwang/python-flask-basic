@@ -23,7 +23,11 @@ source $SCRIPTDIR/.venv/bin/activate
 # Waitng for ES
 ./wait_for_es.sh $ES_HOST
 
-# Start (flask run --no-reload)
-# gunicorn -k uvicorn.workers.UvicornWorker --bind "0.0.0.0:5000" --log-level debug wsgi:app --reload
-# gunicorn -k uvicorn.workers.UvicornWorker -w 2 --bind "0.0.0.0:5000" api.wsgi
-gunicorn -w 2 -b 0.0.0.0:5000 --reload api.wsgi
+
+# # Start (flask run --no-reload)
+# python -m api.wsgi -e dev
+# python -m api.wsgi -e prod
+python -m api.wsgi -r API_AND_BACKGROUND -e dev
+# python -m api.wsgi -r API_AND_BACKGROUND -e prod
+
+# gunicorn -w 2 -b 0.0.0.0:5000 --reload api.wsgi
