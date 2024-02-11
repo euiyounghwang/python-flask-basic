@@ -32,30 +32,29 @@ class UserRepo:
         
 
     def fetchAll(self) -> List['Users']:
-        # userRepo = db.session.query(Users).all()
+        userRepo = db.session.query(Users).all()
         # .filter(Users.sequence == friendships.friend_id) \
-        userRepo = db.session.query(Users, friendships) \
-                    .filter(Users.sequence == friendships.friend_id) \
-                    .add_columns(Users.sequence, Users.id, Users.name, Users.email, friendships.id.label("f_id")).all()
+            
+        # userRepo = db.session.query(Users, friendships) \
+        #             .filter(Users.sequence == friendships.friend_id) \
+        #             .add_columns(Users.sequence, Users.id, Users.name, Users.email, friendships.id.label("f_id")).all()
         
         print(userRepo, type(userRepo))       
-        """ 
         userRepos = [obj.json() for obj in userRepo]
         if userRepos:
             logger.info('fetchAll -> {}'.format(json.dumps(userRepos, indent=2)))
-        """
-        userRepos = [
-                {
-                    "sequence" : obj.sequence,
-                    "id" : obj.id,
-                    "name" : obj.name,
-                    "email" : obj.email,
-                    "friendships" : {
-                        "id" : obj.f_id
-                    }
-                }   
-                for obj in userRepo
-            ]
+        # userRepos = [
+        #         {
+        #             "sequence" : obj.sequence,
+        #             "id" : obj.id,
+        #             "name" : obj.name,
+        #             "email" : obj.email,
+        #             "friendships" : {
+        #                 "id" : obj.f_id
+        #             }
+        #         }   
+        #         for obj in userRepo
+        #     ]
         if userRepos:
             logger.info("{}".format(json.dumps(userRepos, indent=2)))
             return userRepos
