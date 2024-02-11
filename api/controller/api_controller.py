@@ -15,7 +15,7 @@ ITEM_NOT_FOUND = "Item not found for id: {}"
 def omni_db_entity_all_json():
     try:
         results = userRepo.fetchAll()
-        if results:
+        if results is not None:
             return results, 200
         return {'message': 'ITEM_NOT_FOUND'}, 404
     except Exception as ex:
