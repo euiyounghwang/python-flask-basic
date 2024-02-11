@@ -3,6 +3,7 @@ import pytest
 import connexion
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
+from api import es_client, init_api
 
 
 @pytest.fixture
@@ -22,3 +23,8 @@ def flask_app_mock():
     app_client = app_mock.app.test_client()
 
     return app_client
+
+
+@pytest.fixture
+def mock_es_client():
+    return es_client
