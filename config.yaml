@@ -9,7 +9,7 @@
         "db": "postgres"
       },
       "es": {
-        "es_host": "http://localhost:9209",
+        "es_host": "http://localhost:9203",
         "index" : {
             "index" : "kafka_indexing"
         }
