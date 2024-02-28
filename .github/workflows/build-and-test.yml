@@ -175,7 +175,7 @@ jobs:
             docker buildx create --use
             docker buildx build \
               --file Dockerfile \
-              --tag ${{ secrets.DOCKERHUB_USERNAME }}/fn-python-fastapi-gha:es \
+              --tag ${{ secrets.DOCKERHUB_USERNAME }}/fn-python-flask-basic-gha:es \
               --push .
               
       - name: Post to a Slack channel
